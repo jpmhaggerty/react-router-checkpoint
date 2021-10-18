@@ -8,7 +8,7 @@ import ProfilePicture from "./ProfilePicture.js";
 function Profiles({ myProfile }) {
   return (
     <div className="App">
-      <header className="App-header-stub">
+      <header className="App-header">
         <ButtonAppBar title="Community Profiles" />
       </header>
       <main>

@@ -8,10 +8,16 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from "react-router-dom";
 
+const linkStyle = {
+  margin: "1rem",
+  textDecoration: "none",
+  color: 'yellow'
+};
+
 export default function ButtonAppBar({title}) {
   return (
     <Box sx={{ flexGrow: 1, width: 1 }}>
-      <AppBar position="static" color="primary">
+      <AppBar position="static" sx={{bgcolor: "#000000"}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -26,13 +32,13 @@ export default function ButtonAppBar({title}) {
             {title}
           </Typography>
           <Button color="inherit">
-            <Link to="/home">Home</Link>
+            <Link to="/home" style={linkStyle}>Home</Link>
           </Button>
           <Button color="inherit">
-            <Link to="/profiles">Profiles</Link>
+            <Link to="/profiles" style={linkStyle}>Profiles</Link>
           </Button>
           <Button color="inherit">
-            <Link to="/about">About</Link>
+            <Link to="/about" style={linkStyle}>About</Link>
           </Button>
         </Toolbar>
       </AppBar>
