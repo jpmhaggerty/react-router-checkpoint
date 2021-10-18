@@ -4,6 +4,8 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import { Route, Link } from "react-router-dom";
 import ProfilePicture from "./ProfilePicture.js";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 function Profiles({ myProfile }) {
   return (
@@ -18,12 +20,22 @@ function Profiles({ myProfile }) {
               {myProfile.contactProfiles.map((item, value) => (
                 <Grid key={value} item>
                   <Card>
-                  <Link to={`/profiles/${item.lastName}`}>
-                    {item.firstName} {item.lastName}
-                    <br></br>
-                    Birthday: {item.birthday}
-                    <br></br>
-                    Photo Tag: {item.profileImage}
+                    <Link to={`/profiles/${item.lastName}`}>
+                      <CardContent>
+                        <Typography
+                          sx={{ fontSize: 20 }}
+                          color="text.secondary"
+                          gutterBottom
+                        >
+                          {item.firstName} {item.lastName}
+                        </Typography>
+                        <Typography variant="h6" component="div">
+                          Birthday: {item.birthday}
+                        </Typography>
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                          Photo Tag: {item.profileImage}
+                        </Typography>
+                      </CardContent>
                     </Link>
                   </Card>
                 </Grid>

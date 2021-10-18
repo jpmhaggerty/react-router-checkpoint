@@ -2,6 +2,8 @@ import "../App.css";
 import ButtonAppBar from "./ButtonAppBar.js";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 function Home({ myProfile }) {
   return (
@@ -10,35 +12,34 @@ function Home({ myProfile }) {
         <ButtonAppBar title="My Profile Page" />
       </header>
       <main>
-        <Grid>
-          <Grid sx={{ flexGrow: 1 }} container spacing={0}>
-            <Grid item xs={0}>
-              <Grid container justifyContent="center" spacing={0}>
+        <Grid sx={{ flexGrow: 1 }} container spacing={0}>
+          <Card>
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 20 }}
+                color="text.secondary"
+                gutterBottom
+              >
+                {myProfile.personalProfile[0].firstName} {myProfile.personalProfile[0].lastName}
+              </Typography>
+              <Typography variant="h6" component="div">
+                Birthday: {myProfile.personalProfile[0].birthday}
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                Photo Tag: {myProfile.personalProfile[0].profileImage}
+              </Typography>
+            </CardContent>
+          </Card>
+          <Grid container justifyContent="right" spacing={2}>
+            {myProfile.newsArticles.map((item, value) => (
+              <Grid key={value} item>
                 <Card>
-                  {myProfile.personalProfile.firstName} {myProfile.personalProfile.lastName}
+                  {item.title}
                   <br></br>
-                  Birthday: {myProfile.personalProfile.birthday}
-                  <br></br>
-                  Photo Tag: {myProfile.personalProfile.profileImage}
+                  {item.article}
                 </Card>
               </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-            <Grid item xs={10}>
-              <Grid container justifyContent="right" spacing={2}>
-                {myProfile.newsArticles.map((item, value) => (
-                  <Grid key={value} item>
-                    <Card>
-                      {item.title}
-                      <br></br>
-                      {item.article}
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-            </Grid>
+            ))}
           </Grid>
         </Grid>
       </main>
