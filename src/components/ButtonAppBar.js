@@ -6,11 +6,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from "react-router-dom";
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({title}) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, width: 1 }}>
+      <AppBar position="static" color="primary">
         <Toolbar>
           <IconButton
             size="large"
@@ -22,9 +23,17 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            {title}
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">
+            <Link to="/home">Home</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/profiles">Profiles</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/about">About</Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
