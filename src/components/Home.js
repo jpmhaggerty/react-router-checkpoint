@@ -3,26 +3,7 @@ import ButtonAppBar from "./ButtonAppBar.js";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
-function Home() {
-  let myProfile = {
-    newsArticles: [
-      {
-        title: "Winning at Life!",
-        article:
-          "There are many ways to do so...but the best is just try, try, try again!",
-      },
-      //add more stories here in this array!
-    ],
-    contactProfiles: [
-      {
-        firstName: "Willie",
-        lastName: "Dustice",
-        birthday: "01/01/1978 00:00:00",
-        profileImage: "/url-to-an-image.jpeg",
-      },
-    ],
-  };
-
+function Home({ myProfile }) {
   return (
     <div className="App">
       <header className="App-header-stub">
@@ -33,7 +14,7 @@ function Home() {
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
             <Grid item xs={4}>
               <Grid container justifyContent="center" spacing={2}>
-                {myProfile.contactProfiles.map((item, value) => (
+                {myProfile.personalProfile.map((item, value) => (
                   <Grid key={value} item>
                     <Card>
                       {item.firstName} {item.lastName}
