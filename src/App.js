@@ -1,5 +1,5 @@
 import "./App.css";
-import { Switch, Redirect, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import About from "./components/About.js";
 import Profiles from "./components/Profiles.js";
 import Home from "./components/Home.js";
@@ -19,7 +19,13 @@ function App() {
         firstName: "Willie",
         lastName: "Dustice",
         birthday: "01/01/1978 00:00:00",
-        profileImage: "/url-to-an-image.jpeg",
+        profileImage: "/url-to-a-dustice-image.jpeg",
+      },
+      {
+        firstName: "Grover",
+        lastName: "Cleveland",
+        birthday: "03/18/1837 00:00:00",
+        profileImage: "/url-to-a-grover-image.jpeg",
       },
     ],
     personalProfile: [
@@ -32,13 +38,18 @@ function App() {
     ],
   };
 
-  const myCompanyInfo = "My company info"
+  const myCompanyInfo = "My company info";
 
   return (
     <div className="App">
       <main>
         <Switch>
-          <Route path="/about" render={(props) => <About myCompanyInfo={myCompanyInfo} {...props} />} />
+          <Route
+            path="/about"
+            render={(props) => (
+              <About myCompanyInfo={myCompanyInfo} {...props} />
+            )}
+          />
           <Route
             path="/profiles"
             render={(props) => <Profiles myProfile={myProfile} {...props} />}
@@ -47,7 +58,6 @@ function App() {
             path="/home"
             render={(props) => <Home myProfile={myProfile} {...props} />}
           />
-          <Route path="/" render={() => <Redirect to="/home" />} />
         </Switch>
       </main>
     </div>
