@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
-
 function Profiles({ myProfile }) {
   return (
     <div className="App">
@@ -18,42 +17,44 @@ function Profiles({ myProfile }) {
       </header>
       <main>
         <Container>
-        <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-          <Box>
-            <Grid item xs={4}>
-            <Grid container justifyContent="center" spacing={2}>
-              {myProfile.contactProfiles.map((item, value) => (
-                <Grid key={value} item>
-                  <Card>
-                    <Link to={`/profiles/${item.lastName}`}>
-                      <CardContent>
-                        <Typography
-                          sx={{ fontSize: 20 }}
-                          color="text.secondary"
-                          gutterBottom
-                        >
-                          {item.firstName} {item.lastName}
-                        </Typography>
-                        <Typography variant="h6" component="div">
-                          Birthday: {item.birthday}
-                        </Typography>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                          Photo Tag: {item.profileImage}
-                        </Typography>
-                      </CardContent>
-                    </Link>
-                  </Card>
+          <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+            <Box>
+              <Grid item xs={8}>
+                <Grid container justifyContent="center" spacing={2}>
+                  {myProfile.contactProfiles.map((item, value) => (
+                    <Grid key={value} item>
+                      <Card>
+                        <Link to={`/profiles/${item.lastName}`}>
+                          <CardContent>
+                            <Typography
+                              sx={{ fontSize: 20 }}
+                              color="text.secondary"
+                              gutterBottom
+                            >
+                              {item.firstName} {item.lastName}
+                            </Typography>
+                            <Typography variant="h6" component="div">
+                              Birthday: {item.birthday}
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                              Photo Tag: {item.profileImage}
+                            </Typography>
+                          </CardContent>
+                        </Link>
+                      </Card>
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
-            </Grid>
+              </Grid>
+            </Box>
+            <Box>
+              <Route path={["/profiles/:id"]}>
+                <ProfilePicture myProfile={myProfile} />
+              </Route>
+            </Box>
           </Grid>
-          </Box>
-        </Grid>
         </Container>
       </main>
-      <Route path={["/profiles/:id"]}>
-        <ProfilePicture myProfile={myProfile} />
-      </Route>
     </div>
   );
 }
