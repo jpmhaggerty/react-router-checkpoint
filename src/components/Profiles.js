@@ -6,6 +6,9 @@ import { Route, Link } from "react-router-dom";
 import ProfilePicture from "./ProfilePicture.js";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+
 
 function Profiles({ myProfile }) {
   return (
@@ -14,8 +17,10 @@ function Profiles({ myProfile }) {
         <ButtonAppBar title="Community Profiles" />
       </header>
       <main>
+        <Container>
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-          <Grid item xs={4}>
+          <Box>
+            <Grid item xs={4}>
             <Grid container justifyContent="center" spacing={2}>
               {myProfile.contactProfiles.map((item, value) => (
                 <Grid key={value} item>
@@ -42,7 +47,9 @@ function Profiles({ myProfile }) {
               ))}
             </Grid>
           </Grid>
+          </Box>
         </Grid>
+        </Container>
       </main>
       <Route path={["/profiles/:id"]}>
         <ProfilePicture myProfile={myProfile} />
